@@ -9,7 +9,8 @@
 #pragma once
 
 #include <wx/wx.h>
-
+#include "glpane.h"
+/*
 #include "app_frame.hpp"
 
 enum
@@ -23,3 +24,4 @@ public:
     virtual bool OnInit();
 };
 
+*/

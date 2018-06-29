@@ -5,7 +5,7 @@
 //  Created by D Green on 6/28/18.
 //  Copyright © 2018 Dan. All rights reserved.
 //
-
+/*
 #include "main.h"
 
 wxBEGIN_EVENT_TABLE(MyFrame, wxFrame)
@@ -46,3 +46,4 @@ void MyFrame::OnHello(wxCommandEvent& event)
     wxLogMessage("Hello world from wxWidgets!");
 }
 
+*/

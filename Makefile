@@ -1,5 +1,8 @@
-CXX = $(shell wx-config --cxx)
- 
+WXBASE = /Users/dann/src/wxw/wxWidgets-3.1.1/macbuild
+WXCONFIG = $(WXBASE)/wx-config
+CXX = $(shell $(WXCONFIG) --cxx)
+
+
 PROGRAM = main
  
 BUILDDIR = build
@@ -15,12 +18,12 @@ OBJECTS = $(addprefix $(BUILDDIR)/, $(addsuffix .o, $(basename $(SOURCES))))
  
 $(BUILDDIR)/%.o : %.cpp
 	mkdir -p $(dir $@)
-	$(CXX) -c `wx-config --cxxflags` -o $@ $<
+	$(CXX) -c `$(WXCONFIG) --cxxflags` -o $@ $<
 
 all: Makefile $(PROGRAM)
  
 $(PROGRAM):     $(OBJECTS)
-	$(CXX) -o $(PROGRAM) $(OBJECTS) `wx-config --libs`
+	$(CXX) -o $(PROGRAM) $(OBJECTS) `$(WXCONFIG) --libs` `$(WXCONFIG) --libs gl`
 
 clean:
 	rm -f $(BUILDDIR)/*.o $(BUILDDIR)/$(PROGRAM)
