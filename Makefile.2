@@ -1,5 +1,5 @@
 # Define default flags (include your source tree for example
-INCFLAGS = -I./src
+INCFLAGS = -I.
 CXXFLAGS = `wx-config --cxxflags`
 LDFLAGS  = `wx-config --ldflags`
 LDLIBS   = `wx-config --libs`
@@ -12,7 +12,8 @@ else
 endif
 
 # Define our sources, calculate the dependecy files and object files
-TEST_SOURCES := src/Sourcefile1.cc src/Sourcefile2.cc src/MainSourceFile.cc 
+#TEST_SOURCES := src/Sourcefile1.cc src/Sourcefile2.cc src/MainSourceFile.cc 
+TEST_SOURCES = $(wildcard *.cpp)
 TEST_OBJECTS := $(patsubst %.cc, %.o, ${TEST_SOURCES})
 TEST_DEPS := $(patsubst %.cc, %.d, ${TEST_SOURCES})
 
@@ -27,8 +28,6 @@ ifdef FINAL
 	strip test.exe
 endif
 
-Test_resources.o: Test.rc
-	windres -i Test.rc -o Test_resources.o $(REZFLAGS)
 
 clean:
-	rm -rf test.exe test $(TEST_OBJECTS) $(TEST_DEPS) Test_resources.o
+	rm -f $(BUILDDIR)/*.o $(PROGRAM)
